@@ -9,6 +9,7 @@ export type ApiKeys = {
     JINA_API_KEY?: string;
     FIREWORKS_API_KEY?: string;
     SERPER_API_KEY?: string;
+    CEREBRAS_API_KEY?: string;
 };
 
 type ApiKeysState = {
