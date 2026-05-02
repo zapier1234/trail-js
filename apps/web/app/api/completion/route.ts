@@ -1,4 +1,3 @@
-import { auth } from '@clerk/nextjs/server';
 import { CHAT_MODE_CREDIT_COSTS, ChatModeConfig } from '@repo/shared/config';
 import { Geo, geolocation } from '@vercel/functions';
 import { NextRequest } from 'next/server';
@@ -18,8 +17,7 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        const session = await auth();
-        const userId = session?.userId ?? undefined;
+        const userId = undefined;
 
         const parsed = await request.json().catch(() => ({}));
         const validatedBody = completionRequestSchema.safeParse(parsed);
@@ -54,19 +52,7 @@ export async function POST(request: NextRequest) {
 
         console.log('remainingCredits', remainingCredits, creditCost, process.env.NODE_ENV);
 
-        if (!!ChatModeConfig[data.mode]?.isAuthRequired && !userId) {
-            return new Response(JSON.stringify({ error: 'Authentication required' }), {
-                status: 401,
-                headers: { 'Content-Type': 'application/json' },
-            });
-        }
-
-        if (remainingCredits < creditCost && process.env.NODE_ENV !== 'development') {
-            return new Response(
-                'You have reached the daily limit of requests. Please try again tomorrow or Use your own API key.',
-                { status: 429, headers: { 'Content-Type': 'application/json' } }
-            );
-        }
+        // Auth and credit checks removed for direct access
 
         const enhancedHeaders = {
             ...SSE_HEADERS,
