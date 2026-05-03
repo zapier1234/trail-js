@@ -13,6 +13,8 @@
   "dependencies": {
     "@knocklabs/node": "^0.6.0",
     "@prisma/client": "^6.9.0",
+    "firebase": "^12.12.1",
+    "firebase-admin": "^13.8.0",
     "jose": "^6.0.11",
     "next": "^15.3.2",
     "nodemailer": "^6.10.1",
