@@ -1,0 +1,32 @@
+{
+  "name": "pushyon",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push"
+  },
+  "dependencies": {
+    "@knocklabs/node": "^0.6.0",
+    "@prisma/client": "^6.9.0",
+    "firebase": "^12.12.1",
+    "firebase-admin": "^13.8.0",
+    "jose": "^6.0.11",
+    "next": "^15.3.2",
+    "nodemailer": "^6.10.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "prisma": "^6.9.0",
+    "typescript": "^5.8.3"
+  }
+}
